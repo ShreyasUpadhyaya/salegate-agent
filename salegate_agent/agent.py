@@ -42,7 +42,10 @@ Hard rules, no exceptions:
 
 root_agent = LlmAgent(
     name="salegate_qa_assistant",
-    model="gemini-2.5-flash",
+    # "latest" alias rather than a dated model name, so this does not break
+    # again the next time a specific version is sunset (gemini-2.5-flash was
+    # retired shortly after this agent was first built).
+    model="gemini-flash-latest",
     description=(
         "Answers questions about Salegate-scored sales calls: gate decisions, "
         "check results with evidence, transcripts, and agent rollups."

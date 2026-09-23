@@ -31,14 +31,17 @@ Salegate's API is running locally on its default port.
 
 ## Run it
 
-With Salegate's API already running in its own terminal:
+With Salegate's API already running in its own terminal (it defaults to port 8000):
 
 ```bash
-uv run adk web
+uv run adk web --port 8080
 ```
 
-Opens ADK's local dev UI in a browser. Pick `salegate_agent` from the agent list and start
-asking questions.
+`adk web` also defaults to port 8000, so pass `--port` with something else or it will fail to
+bind with `[winerror 10048] only one usage of each socket address`. This opens ADK's local dev
+UI in a browser at `http://127.0.0.1:8080`. Pick `salegate_agent` from the agent list and start
+asking questions. `SALEGATE_API_BASE` in `.env` still points the agent's tools at Salegate's own
+port 8000, unaffected by which port the dev UI itself runs on.
 
 Or from the terminal directly:
 

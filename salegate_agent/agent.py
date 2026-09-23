@@ -42,10 +42,11 @@ Hard rules, no exceptions:
 
 root_agent = LlmAgent(
     name="salegate_qa_assistant",
-    # "latest" alias rather than a dated model name, so this does not break
-    # again the next time a specific version is sunset (gemini-2.5-flash was
-    # retired shortly after this agent was first built).
-    model="gemini-flash-latest",
+    # Pinned rather than the "-latest" alias: gemini-flash-latest returned a
+    # 503 UNAVAILABLE under load during testing. gemini-2.5-flash was retired
+    # shortly after this agent was first built; if this model is retired too,
+    # check `client.models.list()` for a current replacement.
+    model="gemini-3.5-flash",
     description=(
         "Answers questions about Salegate-scored sales calls: gate decisions, "
         "check results with evidence, transcripts, and agent rollups."
